@@ -19,7 +19,7 @@ chrome.browserAction.onClicked.addListener(function (tab) {
   // Check: this is a zabbix page
   if (tab.favIconUrl === "http://zabbix/images/general/zabbix.ico") {
     // Payload
-    var correctURL = URI(tab.url).removeSearch("sid");
+    var correctURL = tab.url.replace(/&*sid=[a-z0-9]{16}&*/g,'');
     // Copying to clipboard
     bg = chrome.extension.getBackgroundPage();
     clipboardholder= bg.document.getElementById("clipboardHolder");
