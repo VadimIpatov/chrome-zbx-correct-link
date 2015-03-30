@@ -17,7 +17,7 @@ function showNotification(title, text, icon, timeout) {
 
 chrome.browserAction.onClicked.addListener(function (tab) {
   // Check: this is a zabbix page
-  if (tab.favIconUrl === "http://zabbix/images/general/zabbix.ico") {
+  if (tab.favIconUrl.indexOf("/images/general/zabbix.ico") !== -1) {
     // Payload
     var correctURL = tab.url.replace(/&*sid=[a-z0-9]{16}&*/g,'');
     // Copying to clipboard
